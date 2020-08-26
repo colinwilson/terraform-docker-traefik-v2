@@ -18,7 +18,7 @@ variable "networks" {
 
 variable "traefik_network" {
   type        = string
-  description = "Name for Docker network to attach Traefik to."
+  description = "Traefik (Docker overlay) network name."
   default     = "traefik"
 }
 

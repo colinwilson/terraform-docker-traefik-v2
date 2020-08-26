@@ -11,7 +11,7 @@ entryPoints:
 providers:
     docker:
       endpoint: "unix:///var/run/docker.sock"
-      network: "traefik"
+      network: "${traefik_network}"
       swarmMode: false
       exposedByDefault: false
 
