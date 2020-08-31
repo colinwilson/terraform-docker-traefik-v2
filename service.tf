@@ -71,6 +71,32 @@ resource "docker_service" "traefik" {
         value = "api@internal"
       }
 
+      # Promerheus Metrics config
+      labels {
+        label = "traefik.http.routers.metrics.rule"
+        value = "Host(`${var.hostname}`) && PathPrefix(`/metrics`)"
+      }
+
+      labels {
+        label = "traefik.http.routers.metrics.entrypoints"
+        value = "https"
+      }
+
+      labels {
+        label = "traefik.http.routers.metrics.tls.certresolver"
+        value = "letsEncrypt"
+      }
+
+      labels {
+        label = "traefik.http.routers.metrics.service"
+        value = "prometheus@internal"
+      }
+
+      labels {
+        label = "traefik.http.routers.metrics.middlewares"
+        value = "traefik-basic-auth"
+      }
+
       configs {
         config_id   = docker_config.traefik-yaml.id
         config_name = docker_config.traefik-yaml.name
