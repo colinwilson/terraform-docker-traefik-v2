@@ -4,7 +4,7 @@ resource "docker_service" "traefik" {
 
   task_spec {
     container_spec {
-      image = "traefik:latest"
+      image = "traefik:${var.traefik_version}"
 
       labels {
         label = "traefik.enable"
