@@ -1,6 +1,6 @@
 # Create Traefik Docker service
 resource "docker_service" "traefik" {
-  name = "traefik-service"
+  name = "traefik"
 
   task_spec {
     container_spec {
@@ -74,7 +74,7 @@ resource "docker_service" "traefik" {
       # Promerheus Metrics config
       labels {
         label = "traefik.http.routers.metrics.rule"
-        value = "Host(`${var.hostname}`) && PathPrefix(`/metrics`)"
+        value = "(Host(`${var.hostname}`) && PathPrefix(`/metrics`)) || (Host(`traefik`) && PathPrefix(`/metrics`))"
       }
 
       labels {
