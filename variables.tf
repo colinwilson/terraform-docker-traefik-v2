@@ -25,7 +25,7 @@ variable "traefik_network" {
 variable "traefik_version" {
   type        = string
   description = "Traefik Docker image version."
-  default     = "2.2.8"
+  default     = "2.2.11"
 }
 
 variable "password" {

@@ -74,17 +74,12 @@ resource "docker_service" "traefik" {
       # Promerheus Metrics config
       labels {
         label = "traefik.http.routers.metrics.rule"
-        value = "(Host(`${var.hostname}`) && PathPrefix(`/metrics`)) || (Host(`traefik`) && PathPrefix(`/metrics`))"
+        value = "Host(`traefik`) && PathPrefix(`/metrics`)"
       }
 
       labels {
         label = "traefik.http.routers.metrics.entrypoints"
-        value = "https"
-      }
-
-      labels {
-        label = "traefik.http.routers.metrics.tls.certresolver"
-        value = "letsEncrypt"
+        value = "http"
       }
 
       labels {
