@@ -6,6 +6,12 @@ resource "docker_service" "traefik" {
     container_spec {
       image = "traefik:${var.traefik_version}"
 
+      env = {
+        # Cloudflare API Tokens for Let's Encrypt DNS Challange
+        CF_DNS_API_TOKEN  = var.cloudflare_dns_token
+        CF_ZONE_API_TOKEN = var.cloudflare_zone_token
+      }
+
       labels {
         label = "traefik.enable"
         value = true

@@ -22,13 +22,26 @@ api:
 # Let's Encrypt
 certificatesResolvers:
     letsEncrypt:
-        acme:
-            email: "${acme_email}"
-            caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server when experimenting to avoid hitting rate limit
-            storage: /etc/traefik/acme/acme.json
-            httpChallenge:
-                # used during the challenge
-                entryPoint: http
+      acme:
+          email: "${acme_email}"
+          caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server when experimenting to avoid hitting Let's Encrypts rate limit
+          storage: /etc/traefik/acme/acme.json
+          keyType: "${lets_encrypt_keytype}"
+          httpChallenge:
+              # used during the challenge
+              entryPoint: http
+    cloudflare:
+      acme:
+        email: "${acme_email}"
+        caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server when experimenting to avoid hitting Let's Encrypts rate limit
+        storage: /etc/traefik/acme/acme.json
+        keyType: "${lets_encrypt_keytype}"
+        dnsChallenge:
+          provider: cloudflare
+          delayBeforeCheck: 0
+          resolvers:
+            - "1.1.1.1:53"
+            - "8.8.8.8:53"
 
 accessLog: {}
 
