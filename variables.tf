@@ -31,7 +31,7 @@ variable "traefik_network_attachable" {
 variable "traefik_version" {
   type        = string
   description = "Traefik Docker image version."
-  default     = "2.3.2" # https://github.com/traefik/traefik/releases/latest
+  default     = "2.3.4" # https://github.com/traefik/traefik/releases/latest
 }
 
 variable "password" {

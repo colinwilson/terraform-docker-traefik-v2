@@ -24,7 +24,7 @@ certificatesResolvers:
     letsEncrypt:
       acme:
           email: "${acme_email}"
-          caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server when experimenting to avoid hitting Let's Encrypts rate limit
+          caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server (default) when experimenting to avoid hitting Let's Encrypts rate limit
           storage: /etc/traefik/acme/acme.json
           keyType: "${lets_encrypt_keytype}"
           httpChallenge:
@@ -33,7 +33,7 @@ certificatesResolvers:
     cloudflare:
       acme:
         email: "${acme_email}"
-        caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server when experimenting to avoid hitting Let's Encrypts rate limit
+        caServer: "${lets_encrypt_env}" # Use Let's Encrypt staging server (default) when experimenting to avoid hitting Let's Encrypts rate limit
         storage: /etc/traefik/acme/acme.json
         keyType: "${lets_encrypt_keytype}"
         dnsChallenge:
