@@ -2,7 +2,7 @@ data "local_file" "traefik-yaml" {
   filename = "${path.module}/traefik.yaml"
 }
 data "template_file" "traefik-yaml" {
-  template = "${file("${path.module}/traefik.yaml")}"
+  template = file("${path.module}/traefik.yaml")
 
   vars = {
     traefik_network      = var.traefik_network
