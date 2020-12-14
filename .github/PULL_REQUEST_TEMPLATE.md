@@ -1,6 +1,6 @@
 ## PR Type
 What kind of change does this PR introduce?
-```
+
 * [ ] Bugfix
 * [ ] Feature
 * [ ] Code style update (formatting, local variables)
@@ -9,7 +9,7 @@ What kind of change does this PR introduce?
 * [ ] Documentation content changes
 * [ ] Tests
 * [ ] Other
-```
+
 
 ## What's new?
 -
