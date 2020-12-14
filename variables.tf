@@ -11,7 +11,7 @@ variable "acme_email" {
 
 # Optional variables
 variable "networks" {
-  type        = list
+  type        = list(string)
   description = "List of networks to connect Traefik to."
   default     = ["traefik"]
 }
@@ -40,12 +40,12 @@ variable "password" {
   default     = "traefik"
 }
 
-variable "lets_encrypt_env" {
+variable "traefik_ssl_cert" {
   type        = string
-  description = "The Let's Encrypt environment to use when requesting the SSL certificate for Traefik: staging, production"
+  description = "The Let's Encrypt environment to use when requesting the SSL certificate for the Traefik instance: staging, production"
   default     = "staging" # Prevents hitting Let's Encrypts rate limit when testing.
   validation {
-    condition     = length(regexall("^staging|production$", var.lets_encrypt_env)) > 0
+    condition     = length(regexall("^staging|production$", var.traefik_ssl_cert)) > 0
     error_message = "Let's Encrypt enviroment variable should be staging or production."
   }
 }
@@ -59,6 +59,18 @@ variable "lets_encrypt_keytype" {
     error_message = "Invalid key type value. Valid Let's Encrypt key types are EC256, EC384, RSA2048, RSA4096, RSA8192."
   }
 }
+
+variable "lets_encrypt_resolvers" {
+  type        = list(string)
+  description = "A list of DNS Challange providers to enable in the Traefik configuration"
+  default     = []
+  validation {
+    condition     = can([for provider in var.lets_encrypt_resolvers : regex("^cloudflare$", provider)])
+    error_message = "Invalid/Unsupported DNS Provider listed. Supported values are: cloudflare."
+  }
+}
+
+# Cloudflare DNS Variables
 
 variable "cloudflare_dns_token" {
   type        = string
@@ -75,5 +87,11 @@ variable "cloudflare_zone_token" {
 variable "cloudflare_email" {
   type        = string
   description = "Cloudflare Account Email"
+  default     = ""
+}
+
+variable "cloudflare_api_key" {
+  type        = string
+  description = "Cloudflare Global API Key"
   default     = ""
 }

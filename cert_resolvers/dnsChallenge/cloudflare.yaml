@@ -1,0 +1,24 @@
+    cloudflare:
+        acme:
+            email: "${acme_email}"
+            caServer: ${le_production_url}
+            storage: ${acme_storage_path}
+            keyType: "${lets_encrypt_keytype}"
+            dnsChallenge:
+              provider: cloudflare
+              delayBeforeCheck: 0
+              resolvers:
+                  - "${cf_dns_resolver_a}:53"
+                  - "${google_dns_resolver_a}:53"
+    cloudflareStaging:
+        acme:
+            email: "${acme_email}"
+            caServer: ${le_staging_url}
+            storage: ${acme_storage_path}
+            keyType: "${lets_encrypt_keytype}"
+            dnsChallenge:
+              provider: cloudflare
+              delayBeforeCheck: 0
+              resolvers:
+                  - "${cf_dns_resolver_a}:53"
+                  - "${google_dns_resolver_a}:53"
