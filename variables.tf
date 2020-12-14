@@ -11,7 +11,7 @@ variable "acme_email" {
 
 # Optional variables
 variable "networks" {
-  type        = list
+  type        = list(string)
   description = "List of networks to connect Traefik to."
   default     = ["traefik"]
 }
@@ -61,11 +61,11 @@ variable "lets_encrypt_keytype" {
 }
 
 variable "lets_encrypt_resolvers" {
-  type = list(string)
+  type        = list(string)
   description = "A list of DNS Challange providers to enable in the Traefik configuration"
-  default = []
+  default     = []
   validation {
-    condition    = can([for provider in var.lets_encrypt_resolvers : regex("^cloudflare$", provider)])
+    condition     = can([for provider in var.lets_encrypt_resolvers : regex("^cloudflare$", provider)])
     error_message = "Invalid/Unsupported DNS Provider listed. Supported values are: cloudflare."
   }
 }
