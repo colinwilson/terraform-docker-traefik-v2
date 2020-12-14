@@ -8,8 +8,8 @@
               provider: cloudflare
               delayBeforeCheck: 0
               resolvers:
-                  - "${cf_dns_resolver_a}:53"
-                  - "${google_dns_resolver_a}:53"
+                  - "${dns_resolver_a}:53"
+                  - "${dns_resolver_b}:53"
     cloudflareStaging:
         acme:
             email: "${acme_email}"
@@ -20,5 +20,5 @@
               provider: cloudflare
               delayBeforeCheck: 0
               resolvers:
-                  - "${cf_dns_resolver_a}:53"
-                  - "${google_dns_resolver_a}:53"
+                  - "${dns_resolver_a}:53"
+                  - "${dns_resolver_b}:53"
