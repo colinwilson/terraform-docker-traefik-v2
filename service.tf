@@ -10,6 +10,8 @@ resource "docker_service" "traefik" {
         # Cloudflare API Tokens for Let's Encrypt DNS Challange
         CF_DNS_API_TOKEN  = var.cloudflare_dns_token
         CF_ZONE_API_TOKEN = var.cloudflare_zone_token
+        CF_API_EMAIL      = var.cloudflare_email
+        CF_API_KEY        = var.cloudflare_api_key
       }
 
       labels {
@@ -54,7 +56,7 @@ resource "docker_service" "traefik" {
 
       labels {
         label = "traefik.http.routers.traefik.tls.certresolver"
-        value = "letsEncrypt"
+        value = var.traefik_ssl_cert == "staging" ? "letsEncryptStaging" : "letsEncrypt"
       }
 
       labels {
