@@ -71,7 +71,6 @@ variable "lets_encrypt_resolvers" {
 }
 
 # Cloudflare DNS Variables
-
 variable "cloudflare_dns_token" {
   type        = string
   description = "Cloudflare DNS Token"
