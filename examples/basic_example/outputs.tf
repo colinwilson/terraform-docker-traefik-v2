@@ -3,7 +3,7 @@ output "traefik_network_name" {
   value       = module.docker-traefik.traefik_network_name
 }
 output "acme_mountpoint" {
-  description = "ACME certificates storage volume mountpoint"
+  description = "Mount point of the ACME certificates storage volume"
   value       = module.docker-traefik.acme_volume_mountpoint
 }
 
