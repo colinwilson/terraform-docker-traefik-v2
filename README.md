@@ -42,7 +42,7 @@ module "docker-traefik" {
   traefik_network_attachable = true
   acme_email                 = "myemail@example.com"
   hostname                   = "traefik.example.com"
-  live_traefik_ssl_cert           = "staging"
+  live_traefik_ssl_cert      = true
   lets_encrypt_keytype       = "EC384"
   lets_encrypt_resolvers     = ["cloudflare"]
 }
