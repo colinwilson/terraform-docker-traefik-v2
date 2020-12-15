@@ -23,7 +23,7 @@ variable "traefik_network" {
 }
 
 variable "traefik_network_attachable" {
-  type        = string
+  type        = bool
   description = "Make the default Traefik network attachable?"
   default     = false
 }
@@ -40,20 +40,16 @@ variable "password" {
   default     = "traefik"
 }
 
-variable "traefik_ssl_cert" {
-  type        = string
-  description = "The Let's Encrypt environment to use when requesting the SSL certificate for the Traefik instance: staging, production"
-  default     = "staging" # Prevents hitting Let's Encrypts rate limit when testing.
-  validation {
-    condition     = length(regexall("^staging|production$", var.traefik_ssl_cert)) > 0
-    error_message = "Let's Encrypt enviroment variable should be staging or production."
-  }
+variable "live_traefik_ssl_cert" {
+  type        = bool
+  description = "Configure the Traefik instance with a live SSL certificate?"
+  default     = false # Prevents hitting Let's Encrypts rate limit when testing.
 }
 
 variable "lets_encrypt_keytype" {
   type        = string
   description = "The SSL certificate key type Let's Encrypt issues: EC256, EC384, RSA2048, RSA4096, RSA8192"
-  default     = "RSA4096"
+  default     = "RSA2048"
   validation {
     condition     = length(regexall("^EC256|EC384|RSA2048|RSA4096|RSA8192$", var.lets_encrypt_keytype)) > 0
     error_message = "Invalid key type value. Valid Let's Encrypt key types are EC256, EC384, RSA2048, RSA4096, RSA8192."
