@@ -24,8 +24,9 @@ This module is meant for use with Terraform 0.13 or higher.
 
 * HTTP --> HTTPS redirect enabled
 * Production & Staging Let's Encrypt `httpChallenge` resolvers configured by default (label values are `letsEncrypt` and `letsEncryptStaging` respectively)
+* Support for `dnsChallenge` providers (currently supported: `cloudflare`)
 * Dashboard enabled and protected by Basic Auth middleware
-* Containers balanced/proxied by Traefik are **not** exposed by default. Container are exposed using the `traefik.enabled` label
+* Containers balanced/proxied by Traefik are **not** exposed by default. Containers are exposed using the `traefik.enabled` label
 * Port 80/443 published in `host` mode to allow client IP forwarding
 * Prometheus metrics enabled (/metrics)
 
