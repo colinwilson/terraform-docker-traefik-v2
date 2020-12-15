@@ -1,7 +1,7 @@
 # terraform-docker-traefik-v2
-An opinionated Terraform module to provision a [Traefik v2](https://containo.us/traefik/) reverse proxy/load balancer container on a Docker host in Swarm mode. See the variables file for the available configuration options.
+An opinionated Terraform module to provision a [Traefik v2](https://github.com/traefik/traefik) reverse proxy/load balancer container on a Docker host in Swarm mode. See the variables file for the available configuration options.
 
-![](https://res.cloudinary.com/qunux/image/upload/v1607987856/traefik-screenshot_e9nz39.webp)
+![](https://res.cloudinary.com/qunux/image/upload/v1608051974/traefik_2.3.5_ds_screenshot_opt_qbb1bm.png)
 
 ## Tutorial
 
@@ -23,12 +23,12 @@ This module is meant for use with Terraform 0.13 or higher.
 ## Traefik Configuration
 
 * HTTP --> HTTPS redirect enabled
-* Production & Staging Let's Encrypt [`httpChallenge`](https://doc.traefik.io/traefik/https/acme/#httpchallenge) resolvers configured by default (label values are `letsEncrypt` and `letsEncryptStaging` respectively)
-* Support for `dnsChallenge` optional providers (currently supported: `cloudflare`)
+* Production & Staging Let's Encrypt [`httpChallenge`](https://doc.traefik.io/traefik/https/acme/#httpchallenge) resolvers configured by default (Docker label values are `letsEncrypt` and `letsEncryptStaging` respectively)
+* Support for optional [`dnsChallenge`](https://doc.traefik.io/traefik/https/acme/#dnschallenge) providers (currently supported providers: `cloudflare`)
 * Dashboard enabled and protected by [Basic Auth middleware](https://doc.traefik.io/traefik/middlewares/basicauth/)
-* Containers balanced/proxied by Traefik are **not** exposed by default. Containers are exposed using the `traefik.enabled` label
+* Containers balanced/proxied by Traefik are **not** exposed by default. Exposed via the `traefik.enabled` Docker label
 * Port 80/443 published in `host` mode to allow client IP forwarding
-* Prometheus metrics enabled (/metrics)
+* [Prometheus metrics](https://doc.traefik.io/traefik/observability/metrics/prometheus/) enabled (Entrypoint: **/metrics**)
 
 ## Usage
 
@@ -38,13 +38,13 @@ Basic usage of this module is as follows:
 module "docker-traefik" {
   source = "github.com/colinwilson/terraform-docker-traefik-v2"
 
-  password                   = "my_password"
-  traefik_network_attachable = true
+  password                   = "my_password"         # optional
+  traefik_network_attachable = true                  # optional
   acme_email                 = "myemail@example.com"
   hostname                   = "traefik.example.com"
-  live_traefik_ssl_cert      = true
-  lets_encrypt_keytype       = "EC384"
-  lets_encrypt_resolvers     = ["cloudflare"]
+  live_traefik_ssl_cert      = true                  # optional
+  lets_encrypt_keytype       = "EC384"               # optional
+  lets_encrypt_resolvers     = ["cloudflare"]        # optional
 }
 ```
 
