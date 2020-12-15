@@ -3,7 +3,7 @@ output "acme_volume_mountpoint" {
 }
 
 output "traefik_network_name" {
-  value = docker_network.network.name
+  value  = docker_network.network.name
 }
 
 output "traefik_service_config_name" {
