@@ -1,7 +1,7 @@
 # terraform-docker-traefik-v2
 An opinionated Terraform module to provision a [Traefik v2](https://github.com/traefik/traefik) reverse proxy/load balancer container on a Docker host in Swarm mode. See the variables file for the available configuration options.
 
-![](https://res.cloudinary.com/qunux/image/upload/v1608051974/traefik_2.3.5_ds_screenshot_opt_qbb1bm.png)
+![](https://res.cloudinary.com/qunux/image/upload/v1608070821/traefik_2.3.5_ds_screenshot_2_opt_fqyanb.png)
 
 ## Tutorial
 
