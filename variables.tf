@@ -40,7 +40,7 @@ variable "password" {
   default     = "traefik"
 }
 
-variable "live_traefik_ssl_cert" {
+variable "live_cert" {
   type        = bool
   description = "Configure the Traefik instance with a live SSL certificate?"
   default     = false # Prevents hitting Let's Encrypts rate limit when testing.
