@@ -5,7 +5,7 @@ An opinionated Terraform module to provision a [Traefik v2](https://github.com/t
 
 ## Tutorial
 
-TBA
+[Provision a Docker Swarm Host with Traefik (v2) on Hetzner Cloud using Terraform Modules - Part 2](https://colinwilson.uk/2020/12/18/provision-a-docker-swarm-host-with-traefik-v2-on-hetzner-cloud-using-terraform-modules-part-2/)
 ## Compatibility
 
 This module is meant for use with Terraform 0.13 or higher.
