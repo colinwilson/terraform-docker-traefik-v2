@@ -42,7 +42,7 @@ module "docker-traefik" {
   traefik_network_attachable = true                  # optional
   acme_email                 = "myemail@example.com"
   hostname                   = "traefik.example.com"
-  live_traefik_ssl_cert      = true                  # optional
+  live_cert      = true                  # optional
   lets_encrypt_keytype       = "EC384"               # optional
   lets_encrypt_resolvers     = ["cloudflare"]        # optional
 }
@@ -70,7 +70,7 @@ A Functional example is included in the
 | traefik_network_attachable | Make the default Traefik network attachable. | bool | `false` | no |
 | traefik_version | Which Traefik Docker image version to use. | string | `"2.3.5"` | no |
 | password | Password to login to Traefik dashboard (username: admin). | string | `"traefik"` | no |
-| live_traefik_ssl_cert | Deploy Traefik with a live SSL cert. | bool | `"false"` | no |
+| live_cert | Deploy Traefik with a live SSL cert. | bool | `"false"` | no |
 | lets_encrypt_keytype | SSL cert key type to issue certs with. | string |`"RSA2048"` | no |
 | lets_encrypt_resolvers | List of DNS Challange providers to enable. | list(string) | `[]`| no |
 

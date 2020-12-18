@@ -31,7 +31,7 @@ variable "traefik_network_attachable" {
 variable "traefik_version" {
   type        = string
   description = "Traefik Docker image version."
-  default     = "2.3.5" # https://github.com/traefik/traefik/releases/latest
+  default     = "2.3.6" # https://github.com/traefik/traefik/releases/latest
 }
 
 variable "password" {
@@ -40,7 +40,7 @@ variable "password" {
   default     = "traefik"
 }
 
-variable "live_traefik_ssl_cert" {
+variable "live_cert" {
   type        = bool
   description = "Configure the Traefik instance with a live SSL certificate?"
   default     = false # Prevents hitting Let's Encrypts rate limit when testing.

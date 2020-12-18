@@ -56,7 +56,7 @@ resource "docker_service" "traefik" {
 
       labels {
         label = "traefik.http.routers.traefik.tls.certresolver"
-        value = var.live_traefik_ssl_cert == false ? "letsEncryptStaging" : "letsEncrypt"
+        value = var.live_cert == false ? "letsEncryptStaging" : "letsEncrypt"
       }
 
       labels {
