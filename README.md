@@ -68,7 +68,7 @@ A Functional example is included in the
 | networks | List of networks Traefik should connect to. | list(string) | `"traefik"` | no |
 | traefik_network | Name of Traefik (Docker overlay) network. | string | `"traefik"` | no |
 | traefik_network_attachable | Make the default Traefik network attachable. | bool | `false` | no |
-| traefik_version | Which Traefik Docker image version to use. | string | `"2.3.6"` | no |
+| traefik_version | Which Traefik Docker image version to use. | string | `"2.4.6"` | no |
 | password | Password to login to Traefik dashboard (username: admin). | string | `"traefik"` | no |
 | live_cert | Deploy Traefik with a live SSL cert. | bool | `"false"` | no |
 | lets_encrypt_keytype | SSL cert key type to issue certs with. | string |`"RSA2048"` | no |
@@ -93,6 +93,6 @@ These sections describe requirements for using this module.
 The following dependencies must be available:
 
 - [Terraform](https://www.terraform.io/downloads.html) v0.13
-- [Terraform Provider for Docker](https://registry.terraform.io/providers/kreuzwerker/docker/latestt) version 2.8.x
+- [Terraform Provider for Docker](https://registry.terraform.io/providers/kreuzwerker/docker/latest) version 2.8.x
 
 
