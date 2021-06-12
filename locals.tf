@@ -6,6 +6,6 @@ locals {
   ACME_STORAGE_PATH = "/etc/traefik/acme/acme.json"
 
   DNS_RESOLVER_A = "1.1.1.1"
-  DNS_RESOLVER_B = "1.0.0.1"
+  DNS_RESOLVER_B = "8.8.8.8"
 
 }
