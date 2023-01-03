@@ -65,10 +65,10 @@ A Functional example is included in the
 
 | Name | Description | Type | Default | Required |
 |------|-------------|:----:|:-----:|:-----:|
-| networks | List of networks Traefik should connect to. | list(string) | `"traefik"` | no |
+| networks | List of additional networks Traefik should connect to. | list(string) | `[]` | no |
 | traefik_network | Name of Traefik (Docker overlay) network. | string | `"traefik"` | no |
 | traefik_network_attachable | Make the default Traefik network attachable. | bool | `false` | no |
-| traefik_version | Which Traefik Docker image version to use. | string | `"2.7.0"` | no |
+| traefik_version | Which Traefik Docker image version to use. | string | `"2.9.6"` | no |
 | password | Password to login to Traefik dashboard (username: admin). | string | `"traefik"` | no |
 | live_cert | Deploy Traefik with a live SSL cert. | bool | `"false"` | no |
 | lets_encrypt_keytype | SSL cert key type to issue certs with. | string |`"RSA2048"` | no |

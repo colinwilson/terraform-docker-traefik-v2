@@ -5,3 +5,8 @@ resource "docker_network" "network" {
   driver          = "overlay"
   check_duplicate = true
 }
+
+data "docker_network" "additional_networks" {
+  for_each = var.networks
+  name     = each.key
+}

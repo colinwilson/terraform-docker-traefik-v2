@@ -11,9 +11,9 @@ variable "acme_email" {
 
 # Optional variables
 variable "networks" {
-  type        = list(string)
-  description = "List of networks to connect Traefik to."
-  default     = ["traefik"]
+  type        = set(string)
+  description = "List of additional networks to connect Traefik to."
+  default     = []
 }
 
 variable "traefik_network" {
@@ -31,13 +31,14 @@ variable "traefik_network_attachable" {
 variable "traefik_version" {
   type        = string
   description = "Traefik Docker image version."
-  default     = "2.7.0" # https://github.com/traefik/traefik/releases/latest
+  default     = "2.9.6" # https://github.com/traefik/traefik/releases/latest
 }
 
 variable "password" {
   type        = string
   description = "Password to login to Traefik dashboard (username: admin)"
   default     = "traefik"
+  sensitive   = true
 }
 
 variable "live_cert" {
