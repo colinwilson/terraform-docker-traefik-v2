@@ -5,7 +5,7 @@ output "acme_volume_mountpoint" {
 
 output "traefik_network_name" {
   description = "Name of the Traefik overlay network"
-  value       = docker_network.network.name
+  value       = docker_network.traefik.name
 }
 
 output "traefik_service_config_name" {

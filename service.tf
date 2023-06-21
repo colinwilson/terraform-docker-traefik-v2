@@ -120,7 +120,16 @@ resource "docker_service" "traefik" {
         read_only = false
       }
     }
-    networks = concat(values(data.docker_network.additional_networks).*.id, [docker_network.network.id])
+    networks_advanced {
+      name = docker_network.traefik.name
+    }
+
+    dynamic "networks_advanced" {
+      for_each = values(data.docker_network.additional_networks).*.id
+      content {
+        name = each.key
+      }
+    }
   }
 
   endpoint_spec {
