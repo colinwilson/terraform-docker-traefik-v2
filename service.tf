@@ -121,7 +121,7 @@ resource "docker_service" "traefik" {
       }
     }
     networks_advanced {
-      name = docker_network.traefik.name
+      name = docker_network.traefik.id
     }
 
     dynamic "networks_advanced" {
